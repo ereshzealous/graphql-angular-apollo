@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<div class="row">
+    <p-table #td [columns]="columns" [value]="authors" [rows]="2" [lazy]="true" (onLazyLoad)="loadAuthors($event)"
+        resizableColumns="true" [paginator]="true" [loading]="loading" [paginator]="true" [responsive]="true"
+        [totalRecords]="totalRecords" [style]="{'width':'80%'}">
+        <ng-template pTemplate="caption">
+            Authors List
+              </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td>{{rowData.name}}</td>
+                <td><span title="{{rowData.emailId}}" style="cursor: pointer;">{{rowData.emailId}}</span></td>
+                <td>{{rowData.mobileNumber}}</td>
+                <td>{{rowData.createdDate}}</td>
+                <td>
+                    <button pButton type="button" label="Edit" icon="fa fa-pencil-square-o" iconPos="left"
+                        (click)="updateAuthor(rowData)"
+                        class="ui-button-raised ui-button-rounded ui-button-success"></button>
+                    &nbsp;
+                    <button pButton type="button" label="Delete" icon="fa fa-times-circle"
+                        (click)="deleteAuthor(rowData)" iconPos="left"
+                        class="ui-button-raised ui-button-rounded ui-button-danger"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog header="Author Details" [(visible)]="showAuthorDialog"
+                    *ngIf="showAuthorDialog" [resizable]="false" [modal]="true" [draggable]="false" id="showAuthorDialog">
+    <modify-authors (hideDialog)="closeDialog()"></modify-authors>
+</p-dialog>
+
+</html>

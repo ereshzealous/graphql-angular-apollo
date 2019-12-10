@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<form class="form-horizontal" #updateAuthorForm="ngForm" role="form" id="updateAuthorForm"
+    enctype="multipart/form-data">
+    <div class="row">
+        <table>
+            <tr>
+                <td><span class="ui-inputgroup-addon"
+                        style="display: inline-block; min-width: 40% !important;"><strong>Author
+                            Name*</strong></span></td>
+                <td><input type="text" pInputText [(ngModel)]="author.name" name="author.name" required="true" /></td>
+            </tr>
+            <tr>
+                <td><span class="ui-inputgroup-addon"
+                        style="display: inline-block; min-width: 25% !important;"><strong>Mobile
+                            Number*</strong></span></td>
+                <td><input type="text" pInputText [(ngModel)]="author.mobileNumber" name="author.mobileNumber"
+                        required="true" /></td>
+            </tr>
+            <tr>
+                <td><span class="ui-inputgroup-addon"
+                        style="display: inline-block; min-width: 25% !important;"><strong>Email*</strong></span></td>
+                <td><input type="text" pInputText [(ngModel)]="author.emailId" name="author.emailId" required="true" />
+                </td>
+            </tr>
+            <tr>
+                    <td colspan="">
+                            <button pButton type="button" label="Update" icon="fa fa-pencil-square-o" iconPos="left"
+                            (click)="updateAuthor(rowData)"
+                            class="ui-button-raised ui-button-rounded ui-button-success"></button>
+                        
+                                <button pButton type="button" label="Cancel" icon="fa fa-pencil-square-o" iconPos="left"
+                                (click)="cancelAuthorUpdate(rowData)"
+                                class="ui-button-raised ui-button-rounded ui-button-warning"></button>
+                            </td>
+                </tr>
+        </table>
+    </div>
+</form>
+
+</html>
